@@ -2,7 +2,10 @@ import 'questions.dart';
 
 class QuizBrain{
 
-  List <Question> questionBank =[
+  int _questionNumber = 0;
+//questionBank property is now private so now we can only access it through
+//get and set methods
+  List <Question> _questionBank =[
     Question('You can lead a cow down stairs but not up stairs in bath.', false),
     Question('Approximately one quarter of human bones are in the feet.',true),
     Question('A slug\'s blood is green.',true),
@@ -33,4 +36,27 @@ class QuizBrain{
         true),
 
   ];
+
+  //method which keeps track of our question number so thaT IT DOESNT exceed our
+  //questions in the list
+  void nextQuestion(){
+    if(_questionNumber < _questionBank.length-1){
+      _questionNumber++;
+    }
+  }
+
+  String getQuestionText(){
+    return _questionBank[_questionNumber].questionText;
+  }
+
+  bool getQuestionAns(){
+    return _questionBank[_questionNumber].questionAns;
+  }
+  int getHowManyQuestions(){
+    return _questionBank.length;
+  }
+  void rowBack(){
+    _questionNumber=0;
+    print(_questionBank.length);
+  }
 }
